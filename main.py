@@ -25,4 +25,4 @@ if __name__ == "__main__":
 
 
 load_dotenv()
-bot.run(os.getenv("TOKEN")
+bot.run(os.getenv("TOKEN"))
