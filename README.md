@@ -1,3 +1,3 @@
-# work in progress - build 1.2
+# work in progress - build
 https://keks-app.de
 
