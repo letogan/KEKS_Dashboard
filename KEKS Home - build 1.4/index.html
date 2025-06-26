@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KEKS - Home</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(to bottom, #15141E 0px, #15141E 60px, #111117 50px, #111117 100%);
+      color: white;
+      font-family: 'League Spartan', sans-serif;
+      overflow-x: hidden;
+      padding-top: 50px;
+      position: relative;
+    }
+    header {
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #15141E;
+      z-index: 10;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-item {
+      text-decoration: none;
+      color: #edab54;
+      padding: 5px 40px;
+      transition: color 0.3s;
+    }
+    .nav-item:hover {
+      color: white;
+    }
+    .nav-home {
+      color: white;
+      padding-bottom: 4px;
+      padding-left: 40px;
+      padding-right: 40px;
+      display: inline-block;
+      position: relative;
+    }
+    .nav-home::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background-color: white;
+    }
+    .wave-container {
+      position: relative;
+      width: 100%;
+      height: 250vh;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .wave {
+      width: 100%;
+      height: 100%;
+      fill: #15141E;
+      display: block;
+    }
+    .center-text {
+      position: absolute;
+      top: 10%;
+      left: 57%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #edab54;
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: none;
+      white-space: pre-line;
+    }
+    .KEKS-logo {
+      position: absolute;
+      top: 10%;
+      left: 43%;
+      transform: translate(-50%, -50%) scaleX(-1);
+      width: 280px;
+      max-width: 30vw;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      animation: rotate360 7s linear infinite;
+    }
+    @keyframes rotate360 {
+      from {
+        transform: translate(-50%, -50%) scaleX(-1) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) scaleX(-1) rotate(-360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="#" class="nav-item nav-home">HOME</a>
+      <a href="https://kekscloud.com/about" class="nav-item">ABOUT</a>
+      <a href="https://kekscloud.com/status" class="nav-item">STATUS</a>
+    </nav>
+  </header>
+  <div class="wave-container">
+    <svg class="wave" viewBox="0 0 1440 480" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="
+        M0,115
+        C240,205 480,52 720,115
+        C900,178 1140,69 1440,75
+        L1440,0
+        L0,0
+        Z
+      "></path>
+    </svg>
+    <div class="center-text">KEKS<br>CLOUD</div>
+    <img src="images/KEKS.webp" alt="KEKS Logo" class="KEKS-logo" />
+  </div>
+</body>
+</html>
