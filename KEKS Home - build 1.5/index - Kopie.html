@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keks Cloud</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(to bottom, #15141E 0px, #15141E 60px, #111117 50px, #111117 100%);
+      color: white;
+      font-family: 'League Spartan', sans-serif;
+      overflow-x: hidden;
+      padding-top: 50px;
+      position: relative;
+    }
+    .header-wrapper {
+      position: relative;
+      width: 100%;
+      z-index: 10;
+      background-color: #15141E;
+    }
+    .left-logo-label {
+      position: absolute;
+      top: 50%;
+      left: 500px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: auto;
+      user-select: none;
+      text-decoration: none;
+      color: #edab54;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      font-size: 20px;
+      line-height: 1.2;
+      z-index: 11;
+    }
+    .left-logo-label img {
+      height: 50px;
+      width: auto;
+      pointer-events: none;
+    }
+    .left-logo-label .left-label {
+      text-align: center;
+    }
+    .login-button {
+      position: absolute;
+      top: 50%;
+      right: 500px;
+      background-color: #edab54;
+      border: none;
+      border-radius: 9999px;
+      padding: 10px 30px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      color: black;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      z-index: 11;
+      transform-origin: center;
+      transform: translateY(-50%) scaleX(-1);
+    }
+    .login-button > span {
+      display: inline-block;
+      transform: scaleX(-1);
+    }
+    .login-button:hover {
+      background-color: #2e2c42;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      z-index: 10;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-item {
+      text-decoration: none;
+      color: #edab54;
+      padding: 5px 40px;
+      transition: color 0.3s;
+    }
+    .nav-item:hover {
+      color: white;
+    }
+    .nav-home {
+      color: white;
+      padding-bottom: 4px;
+      padding-left: 40px;
+      padding-right: 40px;
+      display: inline-block;
+      position: relative;
+    }
+    .nav-home::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background-color: white;
+    }
+    .wave-container {
+      position: relative;
+      width: 100%;
+      height: 250vh;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .wave {
+      width: 100%;
+      height: 100%;
+      fill: #15141E;
+      display: block;
+    }
+    .center-text {
+      position: absolute;
+      top: 10%;
+      left: 57%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #edab54;
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: none;
+      white-space: pre-line;
+    }
+
+    @keyframes rotate-counterclockwise {
+  from {
+    transform: translate(-50%, -50%) scaleX(-1) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) scaleX(-1) rotate(-360deg);
+  }
+}
+
+.KEKS-logo {
+  position: absolute;
+  top: 10%;
+  left: 43%;
+  transform-origin: center;
+  transform: translate(-50%, -50%) scaleX(-1);
+  width: 280px;
+  max-width: 30vw;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+
+  animation: rotate-counterclockwise 150s linear infinite;
+}
+    .hero-buttons {
+      position: absolute;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      z-index: 3;
+    }
+    .hero-button {
+      background-color: #2e2c42;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: #edab54;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.0.5px;
+      height: 44px;
+      line-height: 20px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      min-width: 150px;
+      justify-content: center;
+    }
+    .hero-button.primary {
+      background-color: #2e2c42;
+      color: #edab54;
+    }
+    .hero-button.primary:hover {
+      background-color: #edab54;
+      color: black;
+      transform: translateY(-2px);
+    }
+    .hero-button.no-link {
+      cursor: text;
+      user-select: text;
+      pointer-events: auto;
+      background-color: #2e2c42;
+      padding-left: 20px;
+      padding-right: 20px;
+      min-width: auto;
+      width: auto;
+      justify-content: flex-start;
+    }
+    .hero-button.no-link:hover {
+      background-color: #2e2c42;
+      color: #edab54;
+      transform: none;
+    }
+    .hero-button.no-link span.text {
+      user-select: none;
+      text-decoration: none;
+      white-space: nowrap;
+      font-weight: 400;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      line-height: 20px;
+      color: #edab54;
+    }
+    .hero-button.no-link input {
+      background-color: transparent;
+      border: none;
+      color: #edab54;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      line-height: 20px;
+      outline: none;
+      padding: 0;
+      width: 110px;
+      height: 20px;
+      box-sizing: content-box;
+      caret-color: #edab54;
+    }
+    .hero-button.no-link input::placeholder {
+      color: #edab54 !important;
+      opacity: 0.7 !important;
+    }
+    .hero-button.no-link input:focus::placeholder {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-wrapper">
+    <a href="https://kekscloud.com" class="left-logo-label" aria-label="Zur Startseite Keks Cloud">
+      <img src="images/KEKS.webp" alt="Keks Logo" />
+      <div class="left-label">KEKS<br>CLOUD</div>
+    </a>
+    <a href="https://kekscloud.com/login" class="login-button" aria-label="Log in">
+      <span>Log in</span>
+    </a>
+    <header>
+      <nav class="nav">
+        <a href="https://kekscloud.com" class="nav-item nav-home">HOME</a>
+        <a href="https://kekscloud.com/about" class="nav-item">ABOUT</a>
+        <a href="https://kekscloud.com/status" class="nav-item">STATUS</a>
+      </nav>
+    </header>
+  </div>
+  <div class="wave-container">
+    <svg class="wave" viewBox="0 0 1440 480" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="
+        M0,115
+        C240,205 480,52 720,115
+        C900,178 1140,69 1440,75
+        L1440,0
+        L0,0
+        Z
+      "></path>
+    </svg>
+    <div class="center-text">KEKS<br>CLOUD</div>
+    <img src="images/KEKS.webp" alt="KEKS Logo" class="KEKS-logo" />
+    <div class="hero-buttons">
+      <div class="hero-button no-link" aria-label="Kekscloud Benutzername Eingabe">
+        <span class="text">kekscloud.com/</span>
+        <input type="text" placeholder="username" aria-label="Benutzername" />
+      </div>
+      <a href="https://kekscloud.com/login" class="hero-button primary">Create Cloud</a>
+    </div>
+  </div>
+</body>
+</html>
